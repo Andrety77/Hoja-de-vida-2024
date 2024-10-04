@@ -1,0 +1,238 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #e0e0e0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    border: 1px solid #8a2be2; /* Morado oscuro */
+    transition: background-color 0.3s, border-color 0.3s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+header {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: 2px solid #8a2be2; /* Morado oscuro */
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    animation: fadeIn 2s ease-in-out;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 300;
+    animation: fadeIn 2s ease-in-out;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+header nav ul li a {
+    color: #8a2be2; /* Morado oscuro */
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+header nav ul li a::after {
+    content: '➡️';
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+header nav ul li a:hover::after {
+    transform: translateY(-3px);
+}
+
+.side-image {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 150px;
+    height: 150px;
+    transition: transform 0.40s;
+    border-radius: 8px;
+}
+
+.side-image:hover {
+    transform: scale(1.1);
+}
+
+main {
+    padding: 2rem 0;
+}
+
+.content-section {
+    display: none;
+    padding: 2rem;
+    margin: 1rem 0;
+    background-color: #160c23;
+    border-radius: 8px;
+    border: 1px solid #10011e; /* Morado oscuro */
+    transition: background-color 0.3s, border-color 0.3s;
+    animation: slideIn 1s ease-in-out;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.content-section.active {
+    display: block;
+}
+
+section h2 {
+    border-bottom: 2px solid #8a2be2; /* Morado oscuro */
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    position: relative;
+}
+
+section h2::before {
+    content: '💻✨ ';
+    font-size: 1.5rem;
+}
+
+section p, section ul {
+    
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+section ul {
+    padding-left: 1.5rem;
+}
+
+section ul li {
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 2px solid #8a2be2; /* Morado oscuro */
+    width: 100%;
+    bottom: 0;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+footer a {
+    color: #8a2be2; /* Morado oscuro */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+a:link {
+    color: #ddd6de; /* Color para enlaces no visitados */
+}
+
+a:visited {
+    color: #e8e6ea; /* Color para enlaces visitados */
+}
+
+a:hover {
+    color: #d02121; /* Color para enlaces al pasar el ratón por encima */
+}
+
+a:active {
+    color: #d02121; /* Color para enlaces activos */
+}
+
+/* Modo Claro */
+.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.light-mode #container {
+    background-color: #f5f5f5;
+    border-color: #8a2be2; /* Ajustar si deseas un borde diferente */
+}
+
+.light-mode footer {
+    background-color: #f1f1f1;
+    color: #000000;
+}
+
+.light-mode header {
+    background-color: #f5f5f5;
+}
+
+/* Notificaciones */
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    transition: opacity 0.5s;
+}
+
+/* Emoticonos en el Footer */
+.footer__social img {
+    width: 30px;
+    margin: 0 10px;
+    transition: transform 0.3s;
+}
+
+.footer__social img:hover {
+    transform: scale(1.1);
+}
+
+/*Explicación de los Estilos:
+Estilo General: Se ha establecido un fondo oscuro (#121212) y un color de texto claro (#e0e0e0) para un contraste elegante.
+Contenedor Principal: El #container centraliza y estiliza el contenido con un fondo oscuro, bordes redondeados y un borde de color destacado (#ff6347).
+Encabezado y Navegación: El encabezado tiene un fondo oscuro, con texto blanco y un borde inferior. Los enlaces de navegación cambian de estilo al pasar el ratón sobre ellos.
+Contenido Principal: Cada sección tiene un fondo ligeramente más claro (#2a2a2a), bordes redondeados y un borde de color destacado. Los títulos de las secciones tienen un borde inferior para destacarlos.
+Pie de Página: El pie de página está fijado en la parte inferior de la página, con un fondo oscuro y un borde superior.
+Este CSS debería darle a tu hoja de vida un aspecto profesional y elegante. Puedes ajustar los colores y otros estilos según tus preferencias. Si necesitas más ayuda o tienes alguna otra solicitud, ¡no dudes en preguntar!
