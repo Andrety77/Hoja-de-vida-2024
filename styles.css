@@ -69,8 +69,8 @@ header nav ul li a:hover {
 
 .side-image {
     position: relative; /* Cambiar a relative para mantenerla en el flujo del documento */
-    width: 100px; /* Ajusta el tamaño de la imagen */
-    height: auto; /* Mantiene la proporción */
+    width: 120px; /* Ajusta el tamaño de la imagen */
+    height: 100px; /* Mantiene la proporción */
     border-radius: 8px;
     margin-right: 20px; /* Espacio a la derecha de la imagen */
     margin-top: -40px;
