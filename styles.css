@@ -44,6 +44,9 @@ header nav ul {
     list-style: none;
     padding: 0;
     margin: 1rem 0 0 0;
+    display: flex;
+    justify-content: center; /* Centra los elementos */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten */
 }
 
 header nav ul li {
@@ -64,29 +67,17 @@ header nav ul li a:hover {
     color: #ffffff;
 }
 
-header nav ul li a::after {
-    content: '➡️';
-    font-size: 1.2rem;
-    transition: transform 0.3s;
-}
-
-header nav ul li a:hover::after {
-    transform: translateY(-3px);
-}
-
 .side-image {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 150px;
-    height: 150px;
-    transition: transform 0.40s;
+    position: relative; /* Cambiar a relative para mantenerla en el flujo del documento */
+    width: 100px; /* Ajusta el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción */
     border-radius: 8px;
+    margin-right: 20px; /* Espacio a la derecha de la imagen */
+    margin-top: -40px;
+    float: left; /* Hace que la imagen flote a la izquierda */
 }
 
-.side-image:hover {
-    transform: scale(1.1);
-}
+
 
 main {
     padding: 2rem 0;
@@ -116,13 +107,7 @@ section h2 {
     position: relative;
 }
 
-section h2::before {
-    content: '💻✨ ';
-    font-size: 1.5rem;
-}
-
 section p, section ul {
-    
     font-size: 1.1rem;
     line-height: 1.6;
 }
@@ -167,21 +152,45 @@ footer a:hover {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
-
-a:link {
-    color: #ddd6de; /* Color para enlaces no visitados */
+/* Responsividad */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem; /* Reduce el tamaño en pantallas más pequeñas */
+    }
+    
+    header h2 {
+        font-size: 1.2rem; /* Reduce el tamaño en pantallas más pequeñas */
+    }
+    
+    header nav ul li {
+        margin: 0 0.5rem; /* Ajusta el margen en pantallas más pequeñas */
+    }
+    
+    section h2 {
+        font-size: 1.5rem; /* Reduce el tamaño en pantallas más pequeñas */
+    }
+    
+    section p, section ul {
+        font-size: 1rem; /* Reduce el tamaño en pantallas más pequeñas */
+    }
+    
+    .side-image {
+        width: 100px; /* Ajusta el tamaño de la imagen en pantallas más pequeñas */
+    }
 }
 
-a:visited {
-    color: #e8e6ea; /* Color para enlaces visitados */
-}
-
-a:hover {
-    color: #d02121; /* Color para enlaces al pasar el ratón por encima */
-}
-
-a:active {
-    color: #d02121; /* Color para enlaces activos */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem; /* Reduce aún más el tamaño */
+    }
+    
+    header h2 {
+        font-size: 1rem; /* Reduce aún más el tamaño */
+    }
+    
+    .side-image {
+        width: 80px; /* Ajusta el tamaño de la imagen en pantallas más pequeñas */
+    }
 }
 
 /* Modo Claro */
@@ -228,7 +237,6 @@ a:active {
 .footer__social img:hover {
     transform: scale(1.1);
 }
-
 /*Explicación de los Estilos:
 Estilo General: Se ha establecido un fondo oscuro (#121212) y un color de texto claro (#e0e0e0) para un contraste elegante.
 Contenedor Principal: El #container centraliza y estiliza el contenido con un fondo oscuro, bordes redondeados y un borde de color destacado (#ff6347).
