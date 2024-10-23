@@ -205,16 +205,16 @@ footer a:hover {
 }
 
 .light-mode footer {
-    background-color: #edc2c2;
+    background-color: #cdc0d4;
     color: #000000;
 }
 
 .light-mode header {
-    background-color: #edc2c2;
+    background-color: #cdc0d4;
 }
 
 .light-mode .content-section {
-    background-color: #edc2c2;
+    background-color: #cdc0d4   ;
     border-color: #cccccc;
 }
 
