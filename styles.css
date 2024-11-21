@@ -139,7 +139,8 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
-    color: #ffffff;
+    color: #d43a3a;
+    
 }
 
 /* Animations */
@@ -245,6 +246,8 @@ footer a:hover {
 
 .footer__social img:hover {
     transform: scale(1.1);
+    background-color: #e5e5e5;
+
 }
 /*Explicación de los Estilos:
 Estilo General: Se ha establecido un fondo oscuro (#121212) y un color de texto claro (#e0e0e0) para un contraste elegante.
