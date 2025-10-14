@@ -1,258 +1,278 @@
+/*=============================================
+  HOJA DE VIDA FUTURISTA Por Gemini
+  Concepto: Ciberpunk Neón & Glassmorphism
+===============================================*/
+
+/* 1. VARIABLES Y ESTILOS GLOBALES */
+:root {
+    --bg-color: #030712; /* Negro espacial casi puro */
+    --primary-neon: #614582; /* Cian Eléctrico */
+    --secondary-neon: #b70f4a; /* Magenta Vibrante */
+    --text-color: #e9f0f7; /* Texto blanco con un toque azulado */
+    --container-bg: rgba(41, 87, 155, 0.2); /* Azul oscuro semitransparente para el efecto cristal */
+    --border-radius: 12px;
+    --glow-spread: 5px;
+}
+
+@keyframes animate-gradient-border {
+    0% { border-color: var(--primary-neon); box-shadow: 0 0 var(--glow-spread) var(--primary-neon), inset 0 0 var(--glow-spread) var(--primary-neon); }
+    50% { border-color: var(--secondary-neon); box-shadow: 0 0 var(--glow-spread) var(--secondary-neon), inset 0 0 var(--glow-spread) var(--secondary-neon); }
+    100% { border-color: var(--primary-neon); box-shadow: 0 0 var(--glow-spread) var(--primary-neon), inset 0 0 var(--glow-spread) var(--primary-neon); }
+}
+
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Share Tech Mono', monospace; /* Fuente monoespaciada para el texto */
     margin: 0;
     padding: 0;
-    background-color: #121212;
-    color: #e0e0e0;
-    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(69, 27, 27, 0.8), rgba(0,0,0,0.8)), url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
 }
 
+/* 2. CONTENEDOR PRINCIPAL CON EFECTO CRISTAL */
 #container {
+    width: 90%;
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #1f1f1f;
-    border-radius: 8px;
-    border: 1px solid #8a2be2; /* Morado oscuro */
-    transition: background-color 0.3s, border-color 0.3s;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    margin: 40px auto;
+    padding: 25px;
+    background-color: var(--container-bg);
+    border-radius: var(--border-radius);
+    border: 2px solid;
+    backdrop-filter: blur(10px); /* ¡La magia del Glassmorphism! */
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    animation: animate-gradient-border 8s linear infinite; /* Borde animado */
 }
 
+/* 3. ENCABEZADO Y TÍTULOS CON RESPLANDOR */
 header {
-    background-color: #1f1f1f;
-    color: #ffffff;
-    padding: 1rem 0;
     text-align: center;
-    border-bottom: 2px solid #8a2be2; /* Morado oscuro */
-    position: relative;
+    border-bottom: 2px solid var(--primary-neon);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 5px var(--primary-neon);
+}
+
+header h1, header h2 {
+    font-family: 'Orbitron', sans-serif; /* Fuente futurista para títulos */
+    margin: 0;
+    font-weight: 700;
+    animation: text-flicker 3s infinite alternate;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    animation: fadeIn 2s ease-in-out;
+    font-size: 3rem;
+    color: #e2eaf2;
 }
 
 header h2 {
-    margin: 0;
     font-size: 1.5rem;
-    font-weight: 300;
-    animation: fadeIn 2s ease-in-out;
+    color: var(--primary-neon);
+    font-weight: 400;
 }
 
+/* 4. NAVEGACIÓN IMPACTANTE */
 header nav ul {
     list-style: none;
     padding: 0;
-    margin: 1rem 0 0 0;
+    margin-top: 1.5rem;
     display: flex;
-    justify-content: center; /* Centra los elementos */
-    flex-wrap: wrap; /* Permite que los elementos se ajusten */
-}
-
-header nav ul li {
-    display: inline;
-    margin: 0 1rem;
+    justify-content: center;
+    gap: 20px;
 }
 
 header nav ul li a {
-    color: #8a2be2; /* Morado oscuro */
+    color: var(--primary-neon);
     font-weight: bold;
     text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
-    transition: color 0.3s;
 }
 
-header nav ul li a:hover {
-    text-decoration: underline;
-    color: #ffffff;
+header nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-neon);
+    transition: width 0.4s ease;
 }
 
-.side-image {
-    position: relative; /* Cambiar a relative para mantenerla en el flujo del documento */
-    width: 120px; /* Ajusta el tamaño de la imagen */
-    height: 100px; /* Mantiene la proporción */
-    border-radius: 8px;
-    margin-right: 20px; /* Espacio a la derecha de la imagen */
-    margin-top: -40px;
-    float: left; /* Hace que la imagen flote a la izquierda */
+header nav ul li a:hover, header nav ul li a:focus {
+    color: #f9f9f9;
+    text-shadow: 0 0 10px var(--secondary-neon);
+}       
+
+header nav ul li a:hover::after {
+    width: 100%;
 }
 
-
-
+/* 5. SECCIONES DE CONTENIDO */
 main {
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 .content-section {
     display: none;
     padding: 2rem;
     margin: 1rem 0;
-    background-color: #160c23;
-    border-radius: 8px;
-    border: 1px solid #10011e; /* Morado oscuro */
-    transition: background-color 0.3s, border-color 0.3s;
-    animation: slideIn 1s ease-in-out;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    background-color: rgba(90, 86, 138, 0.3); /* Fondo interno sutil */
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(0, 247, 255, 0.2);
+    animation: content-load 0.8s forwards;
+    box-shadow: 0 0 15px rgba(0, 247, 255, 0.1);
+    
+}
+/* Color enlaces: Blanco Sutil */
+.content-section a {
+    color: var(--text-color); /* Color de texto normal */
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-neon);
+    transition: all 0.3s ease;
+}
+.content-section a:hover {
+    color: #fff;
+    border-bottom-color: var(--secondary-neon);
+    text-shadow: 0 0 8px var(--secondary-neon);
 }
 
+.content-section a:hover {
+    color: #fff; /* Color al pasar el mouse */
+    text-shadow: 0 0 10px var(--secondary-neon);
+}
 .content-section.active {
     display: block;
 }
 
 section h2 {
-    border-bottom: 2px solid #8a2be2; /* Morado oscuro */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    color: var(--primary-neon);
+    text-shadow: 0 0 8px var(--primary-neon);
+    border-bottom: 2px solid var(--primary-neon);
     padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    position: relative;
+    margin-bottom: 1.5rem;
 }
 
 section p, section ul {
     font-size: 1.1rem;
-    line-height: 1.6;
+    line-height: 1.8;
 }
 
 section ul {
-    padding-left: 1.5rem;
+    list-style: none;
+    padding-left: 0;
 }
 
 section ul li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
 }
 
+section ul li::before {
+    content: '>>';
+    position: absolute;
+    left: 0;
+    color: var(--primary-neon);
+    font-weight: bold;
+}
+
+/* 6. IMAGEN LATERAL Y OTROS DETALLES */
+.side-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Circular para un look más tech */
+    border: 3px solid var(--primary-neon);
+    box-shadow: 0 0 15px var(--primary-neon);
+    object-fit: cover;
+    margin: -80px 20px 0 0;
+    float: left;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.side-image:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 25px var(--secondary-neon);
+    border-color: var(--secondary-neon);
+}
+
+/* 7. PIE DE PÁGINA */
 footer {
-    background-color: #1f1f1f;
-    color: #ffffff;
     text-align: center;
-    padding: 1rem 0;
-    border-top: 2px solid #8a2be2; /* Morado oscuro */
-    width: 100%;
-    bottom: 0;
-    transition: background-color 0.3s, border-color 0.3s;
+    padding: 1.5rem 0;
+    border-top: 2px solid var(--primary-neon);
+    margin-top: 2rem;
 }
 
 footer a {
-    color: #8a2be2; /* Morado oscuro */
+    color: var(--secondary-neon);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
 footer a:hover {
-    text-decoration: underline;
-    color: #d43a3a;
-    
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideIn {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-/* Responsividad */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem; /* Reduce el tamaño en pantallas más pequeñas */
-    }
-    
-    header h2 {
-        font-size: 1.2rem; /* Reduce el tamaño en pantallas más pequeñas */
-    }
-    
-    header nav ul li {
-        margin: 0 0.5rem; /* Ajusta el margen en pantallas más pequeñas */
-    }
-    
-    section h2 {
-        font-size: 1.5rem; /* Reduce el tamaño en pantallas más pequeñas */
-    }
-    
-    section p, section ul {
-        font-size: 1rem; /* Reduce el tamaño en pantallas más pequeñas */
-    }
-    
-    .side-image {
-        width: 100px; /* Ajusta el tamaño de la imagen en pantallas más pequeñas */
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 1.5rem; /* Reduce aún más el tamaño */
-    }
-    
-    header h2 {
-        font-size: 1rem; /* Reduce aún más el tamaño */
-    }
-    
-    .side-image {
-        width: 80px; /* Ajusta el tamaño de la imagen en pantallas más pequeñas */
-    }
-}
-
-/* Modo Claro */
-.light-mode {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-.light-mode #container {
-    background-color: #f5f5f5;
-    border-color: #8a2be2; /* Ajustar si deseas un borde diferente */
-}
-
-.light-mode footer {
-    background-color: #cdc0d4;
-    color: #000000;
-}
-
-.light-mode header {
-    background-color: #cdc0d4;
-}
-
-.light-mode .content-section {
-    background-color: #cdc0d4   ;
-    border-color: #cccccc;
-}
-
-.light-mode a {
-    color: #5c0e54; /* Un verde suave para los enlaces */
-}
-
-/* Notificaciones */
-.notification {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #4caf50;
     color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1000;
-    transition: opacity 0.5s;
+    text-shadow: 0 0 10px var(--secondary-neon);
 }
 
-/* Emoticonos en el Footer */
 .footer__social img {
-    width: 30px;
-    margin: 0 10px;
-    transition: transform 0.3s;
+    width: 35px;
+    margin: 0 15px;
+    transition: transform 0.3s, filter 0.3s;
+    filter: grayscale(50%) drop-shadow(0 0 3px var(--primary-neon));
 }
 
 .footer__social img:hover {
-    transform: scale(1.1);
-    background-color: #e5e5e5;
-
+    transform: scale(1.2);
+    filter: grayscale(0%) drop-shadow(0 0 8px var(--secondary-neon));
 }
-/*Explicación de los Estilos:
-Estilo General: Se ha establecido un fondo oscuro (#121212) y un color de texto claro (#e0e0e0) para un contraste elegante.
-Contenedor Principal: El #container centraliza y estiliza el contenido con un fondo oscuro, bordes redondeados y un borde de color destacado (#ff6347).
-Encabezado y Navegación: El encabezado tiene un fondo oscuro, con texto blanco y un borde inferior. Los enlaces de navegación cambian de estilo al pasar el ratón sobre ellos.
-Contenido Principal: Cada sección tiene un fondo ligeramente más claro (#2a2a2a), bordes redondeados y un borde de color destacado. Los títulos de las secciones tienen un borde inferior para destacarlos.
-Pie de Página: El pie de página está fijado en la parte inferior de la página, con un fondo oscuro y un borde superior.
-Este CSS debería darle a tu hoja de vida un aspecto profesional y elegante. Puedes ajustar los colores y otros estilos según tus preferencias. Si necesitas más ayuda o tienes alguna otra solicitud, ¡no dudes en preguntar!
+
+/* 8. ANIMACIONES VÍVIDAS */
+@keyframes text-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow:
+            0 0 4px var(--primary-neon),
+            0 0 11px var(--primary-neon),
+            0 0 19px var(--primary-neon);
+    }
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }
+}
+
+@keyframes content-load {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 9. RESPONSIVIDAD */
+@media (max-width: 768px) {
+    header h1 { font-size: 2.5rem; }
+    header h2 { font-size: 1.2rem; }
+    section h2 { font-size: 1.8rem; }
+
+    .side-image {
+        float: none;
+        display: block;
+        margin: -60px auto 20px auto;
+        width: 120px;
+        height: 120px;
+    }
+}
